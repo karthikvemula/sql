@@ -1,0 +1,39 @@
+name: "cicd build and deploys"
+on: ["pull_request","push","workflow_dispatch"]
+
+env:
+  AZURE_WEBAPP_NAME: 'WebAppTest65'
+  AZURE_WEBAPP_PACKAGE_PATH: './myapp'
+  DOTNET_VERSION: '5.0' 
+  #NETCORE_VERSION: '5.0.x'
+  SUBSCRIPTION_ID: '8505c722-0a5d-4d6e-9f33-650d1b85244b'
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Checkout the repo
+      - uses: actions/checkout@master
+      
+      # Setup .NET Core SDK
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }} 
+      #dotnet build --configuration Release
+      #dotnet build --no-restore
+      #dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}' 
+      # Run dotnet build and publish
+      - name: dotnet build and publish
+        run: |
+          dotnet restore
+          dotnet build --configuration Release
+          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+          
+      # Deploy to Azure Web apps
+      - name: 'Run Azure webapp deploy action using publish profile credentials'
+        uses: azure/webapps-deploy@v2
+        with: 
+          app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
+          publish-profile: ${{ secrets.AzureKey }} # Define secret variable in repository settings as per action documentation
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
