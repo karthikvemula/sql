@@ -37,3 +37,15 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
           publish-profile: ${{ secrets.AzureKey }} # Define secret variable in repository settings as per action documentation
           package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+          
+      - name: array
+        id: arr
+        run: |
+          arr=()
+          for i in "$(./*.sql)"
+          do
+           
+              arr+=($i)
+          
+          done
+          echo ::set-output name=arr::${arr[@]}
