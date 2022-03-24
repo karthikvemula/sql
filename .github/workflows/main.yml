@@ -31,4 +31,4 @@ jobs:
               arr+=($i)
           
           done
-          echo ::set-output name=arr::${arr[@]}
+          echo ::set-output name=arr::${arr[@]} 
