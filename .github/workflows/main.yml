@@ -27,17 +27,8 @@ jobs:
           arr=()
           for i in "$(*.sql)"
           do
-           arr+=$i
-          echo ::'A'
-          done
-          echo ::set-output name=arr::${arr[@]}
-
-            def process_each(ctx, inputs:,**)
-              inputs[:things_params].map do |thing_params|
-             result = continue_trace_if_tracing(Thing::Operation::Create).({
-          
-          })
            
-          end
-           true
-           end
+          echo ::$i
+          done
+      
+
