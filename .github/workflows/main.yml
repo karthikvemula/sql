@@ -28,6 +28,6 @@ jobs:
           for i in "$(*.sql)"
           do
            arr+=$i
-          echo ::set-output name=arr::$i
+          echo ::$i
           done
           echo ::set-output name=arr::${arr[@]}
