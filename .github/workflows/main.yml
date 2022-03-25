@@ -27,7 +27,9 @@ jobs:
           arr=()
           for i in "$(*.sql)"
           do
-          
+           arr+=$i
+           echo ::arr
+          echo ::set-output name=value::${arr[@]}
           done
           
           
