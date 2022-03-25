@@ -12,4 +12,12 @@ jobs:
       - id: matrix
         run: |
           echo '::set-output name=value::[\"a\", \"b\", \"c\"]'
+       
+   
+          $matrix = [
+             'packages' => [
+           'coding-standard',
+           'phpstan-rules',
+          ]
+          ];
   
