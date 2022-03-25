@@ -35,9 +35,9 @@ jobs:
             def process_each(ctx, inputs:,**)
               inputs[:things_params].map do |thing_params|
              result = continue_trace_if_tracing(Thing::Operation::Create).({
-            params: thing_params,
+          
           })
-           return result unless result.success?
+           
           end
            true
            end
