@@ -27,8 +27,7 @@ jobs:
           arr=()
           for i in "$(*.sql)"
           do
-           arr+=$i
-         
+          
           done
           
           
