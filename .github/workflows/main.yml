@@ -33,7 +33,5 @@ jobs:
           ];
 
            foreach ($matrix['packages'] as $package) {
-            $packageDirectory = 'packages/' . $package;
-            $splitRepositoryName = $package;
-               // ... do the magic
+           
            }
