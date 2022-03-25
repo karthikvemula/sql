@@ -27,7 +27,7 @@ jobs:
           arr=()
           for i in "$(./*.sql)"
           do
-           echo ::${A.sql} 
+           echo ::${i} 
               arr+=($i)
           echo ::${arr[i]} 
           done
