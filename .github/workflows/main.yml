@@ -28,7 +28,7 @@ jobs:
           for i in "$(./*.sql)"
           do
            echo ::${i} 
-              arr+=($i)
+           
     
           done
          
