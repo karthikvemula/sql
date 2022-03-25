@@ -28,9 +28,9 @@ jobs:
           for i in "$(*.sql)"
           do
            arr+=$i
-          echo ::'A'
+        
           done
           echo ::set-output name=value::${arr[@]}
-           steps:
-      - run: |
+          steps:
+          - run: |
           echo "${{ arr.value }}"
