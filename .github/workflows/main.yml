@@ -14,7 +14,13 @@ jobs:
 
       # Checkout the repo
       - uses: actions/checkout@master
-      
+            $matrix = [
+            'packages' => [
+          'coding-standard',
+          'phpstan-rules',
+          ]
+          ];
+          
       # Setup .NET Core SDK
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
