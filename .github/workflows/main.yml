@@ -1,23 +1,21 @@
-name: Test
-
+name: main
 on:
-  push
-
+  - pull_request
+  - push
 jobs:
-  test:
+  main:
+    name: ${{matrix.node}}
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.matrix.outputs.value }}
     steps:
-      - id: matrix
-        run: |
-          echo '::set-output name=value::[\"a\", \"b\", \"c\"]'
-       
-   
-          $matrix = [
-             'packages' => [
-           'coding-standard',
-           'phpstan-rules',
-          ]
-          ];
-  
+      - uses: actions/checkout@v2
+      - uses: dcodeIO/setup-node-nvm@master
+        with:
+          node-version: ${{matrix.node}}
+      - run: npm install
+      - run: npm test
+      - uses: codecov/codecov-action@v1
+    strategy:
+      matrix:
+        node:
+          - lts/erbium
+          - node
