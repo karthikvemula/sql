@@ -1,23 +1,33 @@
-name: GitHub Actions Demo
-on: [push]
-jobs:
-  job1:
-    outputs:
-      matrix: ${{ steps.hello.outputs.matrix }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2.3.4
-        with:
-          fetch-depth: 0
-      - name: Test JS action # Run the JavaScript action to output an array of objects.
-        id: hello
-        uses: ghusername/myreponame@master
+name: "cicd build and deploys"
+on: ["pull_request","push","workflow_dispatch"]
 
-  # Run the second job here, to read in the output of the previous job, set its value to a matrix, then iterate over that matrix.
-  job2:
-    needs: [job1]
+env:
+  AZURE_WEBAPP_NAME: 'WebAppTest65'
+  AZURE_WEBAPP_PACKAGE_PATH: './myapp'
+  DOTNET_VERSION: '5.0' 
+  #NETCORE_VERSION: '5.0.x'
+  SUBSCRIPTION_ID: '8505c722-0a5d-4d6e-9f33-650d1b85244b'
+jobs:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    
     steps:
-      - run: echo "I want to outputted objects from job1 to print here"
+
+      # Checkout the repo
+      - uses: actions/checkout@master
+      
+      # Setup .NET Core SDK
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }} 
+     
+      - name: array
+        id: arr
+        run: |
+          arr=()
+          for i in "$(*.sql)"
+          do
+           arr+=$i
+          echo ::'A'
+          done
+          echo ::set-output name=arr::${arr[@]}
