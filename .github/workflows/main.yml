@@ -29,6 +29,6 @@ jobs:
           do
            echo ::${i} 
               arr+=($i)
-          echo ::${arr[i]} 
+    
           done
          
