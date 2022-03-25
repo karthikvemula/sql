@@ -17,8 +17,7 @@
         ports:
           - "1433:1433"
     steps:
-    - name: list container images
-      run: docker ps -a
+   
     - name: checkout
       uses: actions/checkout@v2
     - name: Setup .NET
@@ -27,17 +26,17 @@
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: ./*.sql
+      working-directory: ./Migratedb
     - name: Build
       run: dotnet build --no-restore
-      working-directory: ./*.sql
+      working-directory: ./Migratedb
     - name: Restore donettool
       run: dotnet tool install --global dotnet-ef
-      working-directory: ./*.sql
+      working-directory: ./Migratedb
     - name: update database
       run: dotnet-ef database update --no-build
-      working-directory: ./*.sql
+      working-directory: ./Migratedb
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      working-directory: ./*.sql
+      working-directory: ./Migratedb
     
