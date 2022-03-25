@@ -1,33 +1,43 @@
-name: "cicd build and deploys"
-on: ["pull_request","push","workflow_dispatch"]
-
-env:
-  AZURE_WEBAPP_NAME: 'WebAppTest65'
-  AZURE_WEBAPP_PACKAGE_PATH: './myapp'
-  DOTNET_VERSION: '5.0' 
-  #NETCORE_VERSION: '5.0.x'
-  SUBSCRIPTION_ID: '8505c722-0a5d-4d6e-9f33-650d1b85244b'
-jobs:
-  build-and-deploy:
+ on:
+  push:
+     branches: [ QA ]
+  pull_request:
+     branches: [ QA ]
+    
+    
+ jobs:
+   build:
     runs-on: ubuntu-latest
+    services:
+      sql.data:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        env:
+          SA_PASSWORD: WhatAmIDoing&Wrong
+          ACCEPT_EULA: Y
+        ports:
+          - "1433:1433"
     steps:
-
-      # Checkout the repo
-      - uses: actions/checkout@master
-      
-      # Setup .NET Core SDK
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }} 
-     
-      - name: array
-        id: arr
-        run: |
-          arr=()
-          for i in "$(*.sql)"
-          do
-           arr+=$i
-       
-          done
-          echo ::set-output name=arr::${arr[@]}
+    - name: list container images
+      run: docker ps -a
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ./*.sql
+    - name: Build
+      run: dotnet build --no-restore
+      working-directory: ./*.sql
+    - name: Restore donettool
+      run: dotnet tool install --global dotnet-ef
+      working-directory: ./*.sql
+    - name: update database
+      run: dotnet-ef database update --no-build
+      working-directory: ./*.sql
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      working-directory: ./*.sql
+    
