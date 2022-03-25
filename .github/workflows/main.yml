@@ -30,4 +30,5 @@ jobs:
            arr+=$i
           echo ::'A'
           done
-          echo ::set-output name=arr::${arr[@]}
+          echo ::set-output name=value::${arr[@]}
+          echo "${{ arr.value }}"
