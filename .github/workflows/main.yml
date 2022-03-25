@@ -25,13 +25,4 @@ jobs:
           done
           echo ::set-output name=arr::${arr[@]}
 
-           $matrix = [
-            'packages' => [
-          'coding-standard',
-          'phpstan-rules',
-          ]
-          ];
-
-           foreach ($matrix['packages'] as $package) {
-           
-           }
+         
