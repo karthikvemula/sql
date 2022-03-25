@@ -31,6 +31,4 @@ jobs:
         
           done
           echo ::set-output name=value::${arr[@]}
-          steps:
-          - run: |
-          echo "${{ arr.value }}"
+          
