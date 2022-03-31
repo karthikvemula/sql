@@ -8,19 +8,13 @@
  jobs:
    deploy-db-scripts:
     runs-on: ubuntu-latest
-    steps:
-     - uses: actions/checkout@v1
-     - uses: azure/login@v1
-       with:
-         creds: ${{ secrets.AZURE_CREDENTIALS }}
-      
-           for f in ./ChangeScript/*.sql; 
+       steps:
+      - uses: actions/checkout@v2
+ 
+            ls -la ./ChangeScript
+            for f in ./ChangeScript/*.sql; 
             do 
-              #echo Processing $f ; 
-              #echo Execute sqlcmd $(cat $f) ;
-     - uses: azure/sql-action@v1
-       with:
-        server-name: 'testdbserver.database.windows.net'
-        connection-string: '${{ secrets.AZURE_SQL_CONNECTION_STRING }}'
-        sql-file: $(cat $f)
-                 done;
+              echo Processing $f ; 
+              echo Execute sqlcmd $(cat $f) ;
+            done;
+
