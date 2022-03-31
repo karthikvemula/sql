@@ -6,11 +6,10 @@
     
     
  jobs:
-   deploy-db-scripts:
+   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-   
             for f in ./ChangeScript/*.sql; 
             do 
               echo Processing $f ; 
