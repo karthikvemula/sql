@@ -17,7 +17,7 @@
  
          
             echo "Display All SQL Files to be modified"
-            ls -la ./ChangeScript
+            #ls -la ./ChangeScript
             for f in ./ChangeScript/*.sql; 
             do 
               echo Processing $f ; 
