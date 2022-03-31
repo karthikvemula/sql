@@ -21,7 +21,7 @@
             for f in ./ChangeScript/*.sql; 
             do 
               echo Processing $f ; 
-              echo Execute sqlcmd $(cat $f) ;
+              #echo Execute sqlcmd $(cat $f) ;
             done;
 
 
