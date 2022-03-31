@@ -10,9 +10,9 @@
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Maven
+      - name: Execute sql files
         run: |
-            cat /etc/*-release
+           
             
  
          
