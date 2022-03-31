@@ -4,12 +4,14 @@
   pull_request:
      branches: [ main ] 
     
-    
+                       
  jobs:
    build:
     runs-on: ubuntu-latest
     steps:
+      - name: execute sql command
       - uses: actions/checkout@v2
+      
             for f in ./ChangeScript/*.sql; 
             do 
               echo Processing $f ; 
