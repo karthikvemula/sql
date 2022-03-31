@@ -8,10 +8,8 @@
  jobs:
    deploy-db-scripts:
     runs-on: ubuntu-latest
-       steps:
+    steps:
       - uses: actions/checkout@v2
- 
-            ls -la ./ChangeScript
             for f in ./ChangeScript/*.sql; 
             do 
               echo Processing $f ; 
