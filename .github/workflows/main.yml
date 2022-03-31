@@ -10,14 +10,7 @@
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Maven
-        run: |
-            cat /etc/*-release
-            
- 
-            sudo mvn –-version
-            echo "Display All SQL Files to be modified"
-            ls -la ./ChangeScript
+   
             for f in ./ChangeScript/*.sql; 
             do 
               echo Processing $f ; 
