@@ -16,8 +16,8 @@
       
            for f in ./ChangeScript/*.sql; 
             do 
-              echo Processing $f ; 
-              echo Execute sqlcmd $(cat $f) ;
+              #echo Processing $f ; 
+              #echo Execute sqlcmd $(cat $f) ;
      - uses: azure/sql-action@v1
        with:
         server-name: 'testdbserver.database.windows.net'
