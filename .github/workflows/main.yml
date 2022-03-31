@@ -7,7 +7,7 @@
                        
  jobs:
    build:
-    runs-on: ubuntu-latest
+    runs-on: Linux-prod
     steps:
       - uses: actions/checkout@v2
       - name: Execute sql files
@@ -21,7 +21,7 @@
             for f in ./ChangeScript/*.sql; 
             do 
               echo Processing $f ; 
-              #echo Execute sqlcmd $(cat $f) ;
+              echo Execute sqlcmd $(cat $f) ;
             done;
 
 
