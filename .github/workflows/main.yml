@@ -9,13 +9,20 @@
    build:
     runs-on: ubuntu-latest
     steps:
-      - name: execute sql command
       - uses: actions/checkout@v2
-      
+      - name: Install Maven
+        run: |
+            cat /etc/*-release
+            
+ 
+         
+            echo "Display All SQL Files to be modified"
+            ls -la ./ChangeScript
             for f in ./ChangeScript/*.sql; 
             do 
               echo Processing $f ; 
               echo Execute sqlcmd $(cat $f) ;
             done;
+
 
 
