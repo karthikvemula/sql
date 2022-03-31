@@ -6,37 +6,21 @@
     
     
  jobs:
-   build:
+   deploy-db-scripts:
     runs-on: ubuntu-latest
-    services:
-      sql.data:
-        image: mcr.microsoft.com/mssql/server:2019-latest
-        env:
-          SA_PASSWORD: WhatAmIDoing&Wrong
-          ACCEPT_EULA: Y
-        ports:
-          - "1433:1433"
     steps:
-   
-    - name: checkout
-      uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-      working-directory: ./Migratedb
-    - name: Build
-      run: dotnet build --no-restore
-      working-directory: ./Migratedb
-    - name: Restore donettool
-      run: dotnet tool install --global dotnet-ef
-      working-directory: ./Migratedb
-    - name: update database
-      run: dotnet-ef database update --no-build
-      working-directory: ./Migratedb
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-      working-directory: ./Migratedb
-    
+     - uses: actions/checkout@v1
+     - uses: azure/login@v1
+       with:
+         creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+           for f in ./ChangeScript/*.sql; 
+            do 
+              echo Processing $f ; 
+              echo Execute sqlcmd $(cat $f) ;
+     - uses: azure/sql-action@v1
+       with:
+        server-name: 'testdbserver.database.windows.net'
+        connection-string: '${{ secrets.AZURE_SQL_CONNECTION_STRING }}'
+        sql-file: $(cat $f)
+                 done;
