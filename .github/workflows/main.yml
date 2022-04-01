@@ -1,4 +1,4 @@
- on:
+on:
   push:
      branches: [ main ] 
   pull_request:
@@ -22,8 +22,8 @@
             do 
             aa=($(echo "$f" | tr '.' '\n'))
             aaa=($(echo "$aa" | tr '/' '\n'))
-             echo "${aaa[1]}"
-            if [ "${aaa[1]}" == 03] 
+
+            if [ ${aaa[1]} == 03 ]
              then
 
                  echo Processing $f ; 
@@ -31,6 +31,3 @@
              fi
              
             done;
-
-
-
