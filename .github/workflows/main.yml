@@ -14,7 +14,7 @@ jobs:
         run: |
            
             
-            for i in $(./ChangeScript/*.sql| sort -n) ;
+            for i in $(./ChangeScript/*.sql-d | sort -n) ;
               do 
                 echo $i ; 
               done
