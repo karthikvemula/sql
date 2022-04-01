@@ -20,12 +20,14 @@
             #ls -la ./ChangeScript
             for f in ./ChangeScript/0$a*.sql; 
             do 
-            if [ $a == 4 ]
+            if [ $a == 2 ]
              then
                  break
              fi
               echo Processing $f ; 
               echo Execute sqlcmd $(cat $f) ;
+              echo i: $a
+              ((a++))
             done;
 
 
