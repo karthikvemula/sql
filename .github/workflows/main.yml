@@ -13,7 +13,7 @@ jobs:
       - name: Execute sql files
         run: |
            
-            for i in 'ls -tU ./ChangeScript/*.sql';
+            for i in 'ls -n ./ChangeScript/*.sql';
               do 
                 echo 1 ; 
               done
