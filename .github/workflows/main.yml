@@ -13,22 +13,19 @@ jobs:
       - name: Execute sql files
         run: |
          
-            find ./ChangeScript/*.sql -type f -printf "\n%AD %AT %p" | head -n 11
-            for i in `ls | sort -r`; do echo $i; done
-            
-            #a=1
-             echo "Display All SQL Files to be modified"
-            #ls -la ./ChangeScript
-            for f in ./ChangeScript/*.sql; 
-            do 
-            aa=($(echo "$f" | tr '.' '\n'))
-            aaa=($(echo "$aa" | tr '/' '\n'))
-
-            if [ ${aaa[1]} -ge 03 ]
-             then
-
-                 echo Processing $f ; 
-                 echo Execute sqlcmd $(cat $f) ;
-             fi
-             
-            done;
+           echo "Display All SQL Files to be modified"
+           #ls -la ./ChangeScript
+           a=1
+           for f in ./ChangeScript/*0$a.sql;
+            do
+             # if a is equal to 5 break the loop
+           if [ $a == 2 ]
+           then
+               break
+           fi
+            # Print the value
+            echo "Iteration no $a"
+            echo Processing $f 
+            echo Execute sqlcmd $(cat $f) ;
+            ((a=a+1))
+            done; 
