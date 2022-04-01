@@ -21,16 +21,14 @@
             for f in ./ChangeScript/*.sql; 
             do 
             aa=($(echo "$f" | tr '.' '\n'))
+            echo "${aa[0]}"
             if [ ${aa[0]} == 03 ]
              then
-                 #break
+
                  echo Processing $f ; 
                  echo Execute sqlcmd $(cat $f) ;
              fi
-              #echo Processing $f ; 
-              #echo Execute sqlcmd $(cat $f) ;
-              #echo i: $a
-              #((a++))
+             
             done;
 
 
