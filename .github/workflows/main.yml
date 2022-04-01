@@ -12,12 +12,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Execute sql files
         run: |
-            at=./ChangeScript/*.sql;
-            for i in 'ls -n ./ChangeScript/*.sql';
+         
+            for i in 'ls -r ./ChangeScript/*.sql';
               do 
                 echo $i ; 
               done
-            for i in `ls -1 | sort -r`; do echo $i; done
+            for i in `ls | sort -r`; do echo $i; done
             
             #a=1
              echo "Display All SQL Files to be modified"
