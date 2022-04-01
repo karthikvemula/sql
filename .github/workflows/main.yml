@@ -17,7 +17,7 @@ jobs:
               do 
                 echo $i ; 
               done
-            for i in `ls -ChangeScript | sort -r`; do echo $i; done
+            for i in `ls -1 | sort -r`; do echo $i; done
             
             #a=1
              echo "Display All SQL Files to be modified"
