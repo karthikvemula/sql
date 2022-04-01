@@ -13,10 +13,7 @@ jobs:
       - name: Execute sql files
         run: |
          
-            for i in 'ls -ltc';
-              do 
-                echo $i ; 
-              done
+            find / -type f -printf "\n%AT %p" | head -n 11 | sort -k1.1n
             for i in `ls | sort -r`; do echo $i; done
             
             #a=1
