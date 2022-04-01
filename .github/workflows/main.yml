@@ -16,7 +16,7 @@ jobs:
            echo "Display All SQL Files to be modified"
            #ls -la ./ChangeScript
            a=1
-           for f in ./ChangeScript/*0$a.sql;
+           for f in ./ChangeScript/0$a*.sql;
             do
              # if a is equal to 5 break the loop
            if [ $a == 2 ]
