@@ -17,12 +17,13 @@ jobs:
            #ls -la ./ChangeScript
            a=1
            for f in ./ChangeScript/0$a*.sql;
+           until [ $a == 3 ]
             do
              # if a is equal to 5 break the loop
-           if [ $a == 3 ]
-           then
-               break
-           fi
+           #until [ $a == 3 ]
+           #then
+           #    break
+           #fi
             # Print the value
             echo "Iteration no $a"
             echo Processing $f 
