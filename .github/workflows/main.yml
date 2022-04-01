@@ -13,23 +13,24 @@
       - name: Execute sql files
         run: |
            
-            t="one,two,three"
-              a=($(echo "$t" | tr ',' '\n'))
-             echo "${a[2]}"
+            
  
-            a=1
+            #a=1
             echo "Display All SQL Files to be modified"
             #ls -la ./ChangeScript
-            for f in ./ChangeScript/0$a*.sql; 
+            for f in ./ChangeScript/*.sql; 
             do 
-            if [ $a == 3 ]
+            aa=($(echo "$f" | tr '.' '\n'))
+            if [ ${aa[0]} == 03 ]
              then
-                 break
+                 #break
+                 echo Processing $f ; 
+                 echo Execute sqlcmd $(cat $f) ;
              fi
-              echo Processing $f ; 
-              echo Execute sqlcmd $(cat $f) ;
-              echo i: $a
-              ((a++))
+              #echo Processing $f ; 
+              #echo Execute sqlcmd $(cat $f) ;
+              #echo i: $a
+              #((a++))
             done;
 
 
