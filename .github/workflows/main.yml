@@ -27,7 +27,7 @@
               echo Processing $f ; 
               echo Execute sqlcmd $(cat $f) ;
               echo i: $a
-              ((a++))
+              ((++a))
             done;
 
 
