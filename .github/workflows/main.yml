@@ -20,7 +20,7 @@
             #ls -la ./ChangeScript
             for f in ./ChangeScript/0$a*.sql; 
             do 
-            if [ $a == 2 ]
+            if [ $a == 4 ]
              then
                  break
              fi
