@@ -22,8 +22,8 @@
             do 
             aa=($(echo "$f" | tr '.' '\n'))
             aaa=($(echo "$aa" | tr '/' '\n'))
-
-            if [ ${aaa[1]} == 02] 
+             echo "${aaa[1]}"
+            if [ ${aaa[1]} == 03] 
              then
 
                  echo Processing $f ; 
