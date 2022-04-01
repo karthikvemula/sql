@@ -17,7 +17,7 @@ jobs:
            #ls -la ./ChangeScript
            a=1
            for f in ./ChangeScript/0$a*.sql;
-           until [ $a == 3 ]
+           until [ $a -gt 3 ]
             do
              # if a is equal to 5 break the loop
            #until [ $a == 3 ]
