@@ -21,7 +21,7 @@
             for f in ./ChangeScript/*.sql; 
             do 
             aa=($(echo "$f" | tr '.' '\n'))
-            aaa=($(echo "$f" | tr '/' '\n'))
+            aaa=($(echo "$aa" | tr '/' '\n'))
             echo "${aaa[0]}"
             echo "${aaa[1]}"
             echo "${aaa[2]}"
