@@ -13,17 +13,20 @@ jobs:
       - name: Execute sql files
         run: |
          
-           echo "Display All SQL Files to be modified"
-           #ls -la ./ChangeScript
-           #a=range(1,4)
-           a = 1
-           while a <= 4:
-           print(n, end=' ')
-           a = a+1
-           #for a in range(1, 4):
-           for f in ./ChangeScript/0$a*.sql;
-            do
-            echo "Iteration no $a"
-            echo Processing $f 
-            echo Execute sqlcmd $(cat $f) ;
-            done; 
+
+          mkdir deployment_scripts
+          version=$(python3 ./PythonCicdScripts/cicd_get_version.py)
+          echo "Version of deployment is ${version} "
+          i=1
+          while read FILE; 
+          do 
+            #wc_file_list=$(cat changed_file_list.txt | wc -l)
+            if [[ ${FILE} == ./ChangeScript/*.sql ]]; 
+            then
+                 file_name=`echo ${FILE} | sed 's|.*/||'`
+                 cp ${FILE} ./deployment_scripts/V${version}.${i}__${file_name}
+                 #echo cp ${FILE} ./deployment_scripts/V${version}.${i}__${file_name}
+                 i=$(( ${i} + 1 ))
+            fi
+          done < changed_file_list.txt
+          ls  ./deployment_scripts
