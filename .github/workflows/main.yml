@@ -15,8 +15,8 @@ jobs:
          
            echo "Display All SQL Files to be modified"
            #ls -la ./ChangeScript
-           #a=[4]
-           for a in range(1, 4):
+           a=(1,4)
+           #for a in range(1, 4):
            for f in ./ChangeScript/0$a*.sql;
             do
             echo "Iteration no $a"
