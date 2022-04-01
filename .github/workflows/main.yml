@@ -15,11 +15,15 @@
            
             
  
-         
+            a=1
             echo "Display All SQL Files to be modified"
             #ls -la ./ChangeScript
-            for f in ./ChangeScript/*.sql; 
+            for f in ./ChangeScript/0$a*.sql; 
             do 
+            if [ $a == 3 ]
+             then
+                 break
+             fi
               echo Processing $f ; 
               echo Execute sqlcmd $(cat $f) ;
             done;
