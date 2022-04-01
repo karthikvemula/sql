@@ -13,7 +13,7 @@ jobs:
       - name: Execute sql files
         run: |
          
-            find ./ChangeScript/*.sql -type f -printf "\n%AT %p" | head -n 11
+            find ./ChangeScript/*.sql -type f -printf "\n%AD %AT %p" | head -n 11
             for i in `ls | sort -r`; do echo $i; done
             
             #a=1
