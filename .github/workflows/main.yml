@@ -7,7 +7,7 @@
                        
  jobs:
    build:
-    runs-on: Linux-prod
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Execute sql files
