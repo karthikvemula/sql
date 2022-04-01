@@ -28,5 +28,5 @@ jobs:
             echo "Iteration no $a"
             echo Processing $f 
             echo Execute sqlcmd $(cat $f) ;
-            ((a=a+1))
+              ((a=a+1))
             done; 
