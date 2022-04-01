@@ -19,7 +19,7 @@ jobs:
            for f in ./ChangeScript/0$a*.sql;
             do
              # if a is equal to 5 break the loop
-           if [ $a == 2 ]
+           if [ $a == 3 ]
            then
                break
            fi
