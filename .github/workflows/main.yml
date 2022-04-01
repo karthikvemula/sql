@@ -15,7 +15,7 @@ jobs:
            
             for i in 'ls -n ./ChangeScript/*.sql';
               do 
-                echo 1 ; 
+                echo $i ; 
               done
             
             #a=1
