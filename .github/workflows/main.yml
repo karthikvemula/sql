@@ -23,7 +23,7 @@ jobs:
             aa=($(echo "$f" | tr '.' '\n'))
             aaa=($(echo "$aa" | tr '/' '\n'))
 
-            if [ ${aaa[1]} -ge 01 ]
+            if [ ${aaa[1]} -ge 03 ]
              then
 
                  echo Processing $f ; 
