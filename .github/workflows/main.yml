@@ -23,7 +23,7 @@
             aa=($(echo "$f" | tr '.' '\n'))
             aaa=($(echo "$aa" | tr '/' '\n'))
 
-            if [ ${aaa[1]} == 03 ]
+            if [ ${aaa[1]} == 03 && ${aaa[1]} == 02]
              then
 
                  echo Processing $f ; 
