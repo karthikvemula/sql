@@ -21,8 +21,9 @@
             for f in ./ChangeScript/*.sql; 
             do 
             aa=($(echo "$f" | tr '.' '\n'))
-            echo "${aa[0]}"
-            if [ ${aa[0]} == 03 ]
+            aaa=($(echo "$f" | tr '/' '\n'))
+            echo "${aaa[1]}"
+            if [ ${aaa[1]} == 03 ]
              then
 
                  echo Processing $f ; 
