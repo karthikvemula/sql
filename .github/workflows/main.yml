@@ -14,14 +14,11 @@ jobs:
         run: |
            
             
-            for i in 'ls -tU ./ChangeScript/*.sql';
-              do 
-                echo 1 ; 
-              done
+            
             #a=1
              echo "Display All SQL Files to be modified"
             #ls -la ./ChangeScript
-            for f in ./ChangeScript/*.sql; 
+            for f in 'ls -tU ./ChangeScript/*.sql'; 
             do 
             aa=($(echo "$f" | tr '.' '\n'))
             aaa=($(echo "$aa" | tr '/' '\n'))
