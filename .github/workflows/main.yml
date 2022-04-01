@@ -15,10 +15,10 @@
            
             
  
-            a=1
+            a=0
             echo "Display All SQL Files to be modified"
             #ls -la ./ChangeScript
-            for f in ./ChangeScript/0$a*.sql; 
+            for f in ./ChangeScript/$a*.sql; 
             do 
             if [ $a == 3 ]
              then
@@ -27,7 +27,7 @@
               echo Processing $f ; 
               echo Execute sqlcmd $(cat $f) ;
               echo i: $a
-              ((++a))
+              ((a++))
             done;
 
 
