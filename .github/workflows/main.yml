@@ -3,9 +3,9 @@ on:
      branches: [ main ] 
   pull_request:
      branches: [ main ] 
-    
-                       
- jobs: 
+                          
+
+jobs: 
    build:
     runs-on: ubuntu-latest
     steps:
@@ -16,7 +16,7 @@ on:
             
  
             #a=1
-            echo "Display All SQL Files to be modified"
+             echo "Display All SQL Files to be modified"
             #ls -la ./ChangeScript
             for f in ./ChangeScript/*.sql; 
             do 
