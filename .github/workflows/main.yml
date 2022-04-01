@@ -15,7 +15,7 @@ jobs:
          
            echo "Display All SQL Files to be modified"
            #ls -la ./ChangeScript
-           a=1
+             a=1
            for f in ./ChangeScript/0$a*.sql;
             until [ $a -gt 3 ]
             do
