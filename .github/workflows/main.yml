@@ -15,18 +15,10 @@ jobs:
          
            echo "Display All SQL Files to be modified"
            #ls -la ./ChangeScript
-           a=[1,2,3]
+           a=[1,2]
            for f in ./ChangeScript/0$a*.sql;
-           # until [ $a -gt 3 ]
             do
-             # if a is equal to 5 break the loop
-           #until [ $a == 3 ]
-           #then
-           #    break
-           #fi
-            # Print the value
             echo "Iteration no $a"
             echo Processing $f 
             echo Execute sqlcmd $(cat $f) ;
-              #((a=a+1))
             done; 
