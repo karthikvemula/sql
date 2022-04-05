@@ -21,8 +21,8 @@ jobs:
       - name: Extract GIT Details
         id: git_details
         run: |
-           merge_commit=`git log | head -n 1 | cut -d " " -f2`
-           previous_commit=`git rev-list --parents -n 1 ${merge_commit} | cut -d ' ' -f2`
+           #merge_commit=`git log | head -n 1 | cut -d " " -f2`
+           #previous_commit=`git rev-list --parents -n 1 ${merge_commit} | cut -d ' ' -f2`
            echo ::set-output name=merge_commit::$(git log | head -n 1 | cut -d " " -f2 )
            echo git log | head -n 1 | cut -d " " -f2 
            echo git rev-list --parents -n 1 ${merge_commit} | cut -d ' ' -f2 
