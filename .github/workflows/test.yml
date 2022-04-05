@@ -24,6 +24,8 @@ jobs:
            merge_commit=`git log | head -n 1 | cut -d " " -f2`
            previous_commit=`git rev-list --parents -n 1 ${merge_commit} | cut -d ' ' -f2`
            echo ::set-output name=merge_commit::$(git log | head -n 1 | cut -d " " -f2 )
+           echo git log | head -n 1 | cut -d " " -f2 
+           echo git rev-list --parents -n 1 ${merge_commit} | cut -d ' ' -f2 
            echo ::set-output name=previous_commit::$(git rev-list --parents -n 1 ${merge_commit} | cut -d ' ' -f2 )
            #echo ${merge_commit}
            echo ::set-output name=comments::$(git log --pretty=format:"%s" | head -n1)
